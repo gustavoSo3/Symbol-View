@@ -6,9 +6,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <header>
-        <h1>Ticket Checker</h1>
-      </header>
       <body>{children}</body>
     </html>
   )

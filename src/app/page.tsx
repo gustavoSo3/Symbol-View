@@ -1,26 +1,30 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type ticket_data = {
-  ticket_name: string;
+type ticker_data = {
+  ticker_name: string;
   open_value: number;
-  current_price: number;
+  current_value: number;
   change: number;
 };
 
-async function getTickets(tickets: Array<string>): Promise<Array<ticket_data>> {
-  const tickets_data: Array<ticket_data> = await Promise.all(
+async function getTickers(tickets: Array<string>): Promise<Array<ticker_data>> {
+
+  //TODO: change to dinamic symbol
+
+  const tickets_data: Array<ticker_data> = await Promise.all(
     tickets.map(async (ticket: string) => {
       const response = await fetch(
-        "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo"
+        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
       );
       const ticket_object = await response.json();
 
-      const current: ticket_data = {
-        ticket_name: ticket,
+      const current: ticker_data = {
+        ticker_name: ticket,
         open_value: Number(ticket_object["Global Quote"]["02. open"]),
-        current_price: Number(ticket_object["Global Quote"]["05. price"]),
+        current_value: Number(ticket_object["Global Quote"]["05. price"]),
         change: Number(ticket_object["Global Quote"]["10. change percent"].slice(0, 7)),
       };
 
@@ -32,8 +36,8 @@ async function getTickets(tickets: Array<string>): Promise<Array<ticket_data>> {
 }
 
 export default function Page() {
-  const [tickets, setTickets] = useState<ticket_data[]>([]);
-  const ticket_names: Array<string> = [
+  const [tickers, setTickers] = useState<ticker_data[]>([]);
+  const ticker_names: Array<string> = [
     "NVDA",
     "MSFT",
     "AAPL",
@@ -53,14 +57,14 @@ export default function Page() {
 
   useEffect(() => {
 
-    getTickets(ticket_names)
+    getTickers(ticker_names)
       .then((fetched_data) => {
         console.log(fetched_data);
-        setTickets(fetched_data);
+        setTickers(fetched_data);
       })
       .catch((reason) => {
         console.log(reason);
-        setTickets([]);
+        setTickers([]);
       });
 
   }, []);
@@ -70,13 +74,15 @@ export default function Page() {
       <h2>Latest 15 tickets</h2>
 
       <div>
-        {tickets.map((ticket: ticket_data, index) => (
-          <div key={index}>
-            <h2>{ticket.ticket_name}</h2>
-            <h3>open: {ticket.open_value}</h3>
-            <h3>current: {ticket.current_price}</h3>
-            <h3>change: {ticket.change}</h3>
-          </div>
+        {tickers.map((ticker: ticker_data, index) => (
+          <Link key={index} href={`/${ticker.ticker_name}`}>
+            <div >
+              <h2>{ticker.ticker_name}</h2>
+              <h3>open: {ticker.open_value}</h3>
+              <h3>current: {ticker.current_value}</h3>
+              <h3>change: {ticker.change}</h3>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
