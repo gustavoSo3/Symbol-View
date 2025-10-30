@@ -3,13 +3,6 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type symbol_data = {
-  symbol: string;
-  open_value: number;
-  current_value: number;
-  change: number;
-};
-
 async function getSymbols(symbols: Array<string>): Promise<Array<symbol_data>> {
 
   //TODO: change to dinamic symbol
@@ -71,7 +64,7 @@ export default function Page() {
 
   return (
     <div>
-      <h2>Here are 15 Symbols</h2>
+      <h2>My watchlist</h2>
 
       <div>
         {symbols.map((symbol: symbol_data, index) => (

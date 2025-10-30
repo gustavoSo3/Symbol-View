@@ -1,1 +1,1 @@
-# Stock Symbol viewer 
+# Stock Symbol viewer
