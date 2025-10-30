@@ -1,6 +1,6 @@
 "use client";
 import { use, useEffect, useState } from "react";
-import { Bar, CartesianGrid, Cell, ComposedChart, ErrorBar, Label, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
+import { Bar, CartesianGrid, Cell, ComposedChart, Legend, Line, ResponsiveContainer, Tooltip, XAxis, YAxis } from "recharts";
 
 type symbol_iformation = {
   symbol: string;

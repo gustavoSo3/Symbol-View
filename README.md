@@ -1,1 +1,1 @@
-# Ticketer for challenge
+# Stock Symbol viewer 

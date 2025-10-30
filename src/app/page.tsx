@@ -3,41 +3,41 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-type ticker_data = {
-  ticker_name: string;
+type symbol_data = {
+  symbol: string;
   open_value: number;
   current_value: number;
   change: number;
 };
 
-async function getTickers(tickets: Array<string>): Promise<Array<ticker_data>> {
+async function getSymbols(symbols: Array<string>): Promise<Array<symbol_data>> {
 
   //TODO: change to dinamic symbol
 
-  const tickets_data: Array<ticker_data> = await Promise.all(
-    tickets.map(async (ticket: string) => {
+  const resp_symbols: Array<symbol_data> = await Promise.all(
+    symbols.map(async (symbol: string) => {
       const response = await fetch(
         `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
       );
-      const ticket_object = await response.json();
+      const symbol_raw_object = await response.json();
 
-      const current: ticker_data = {
-        ticker_name: ticket,
-        open_value: Number(ticket_object["Global Quote"]["02. open"]),
-        current_value: Number(ticket_object["Global Quote"]["05. price"]),
-        change: Number(ticket_object["Global Quote"]["10. change percent"].slice(0, 7)),
+      const current: symbol_data = {
+        symbol: symbol,
+        open_value: Number(symbol_raw_object["Global Quote"]["02. open"]),
+        current_value: Number(symbol_raw_object["Global Quote"]["05. price"]),
+        change: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)),
       };
 
       return current;
     })
   );
 
-  return tickets_data;
+  return resp_symbols;
 }
 
 export default function Page() {
-  const [tickers, setTickers] = useState<ticker_data[]>([]);
-  const ticker_names: Array<string> = [
+  const [symbols, setSymbols] = useState<symbol_data[]>([]);
+  const home_page_symbols: Array<string> = [
     "NVDA",
     "MSFT",
     "AAPL",
@@ -57,30 +57,30 @@ export default function Page() {
 
   useEffect(() => {
 
-    getTickers(ticker_names)
+    getSymbols(home_page_symbols)
       .then((fetched_data) => {
         console.log(fetched_data);
-        setTickers(fetched_data);
+        setSymbols(fetched_data);
       })
       .catch((reason) => {
         console.log(reason);
-        setTickers([]);
+        setSymbols([]);
       });
 
   }, []);
 
   return (
     <div>
-      <h2>Latest 15 tickets</h2>
+      <h2>Here are 15 Symbols</h2>
 
       <div>
-        {tickers.map((ticker: ticker_data, index) => (
-          <Link key={index} href={`/${ticker.ticker_name}`}>
+        {symbols.map((symbol: symbol_data, index) => (
+          <Link key={index} href={`/${symbol.symbol}`}>
             <div >
-              <h2>{ticker.ticker_name}</h2>
-              <h3>open: {ticker.open_value}</h3>
-              <h3>current: {ticker.current_value}</h3>
-              <h3>change: {ticker.change}</h3>
+              <h2>{symbol.symbol}</h2>
+              <h3>open: {symbol.open_value}</h3>
+              <h3>current: {symbol.current_value}</h3>
+              <h3>change: {symbol.change}</h3>
             </div>
           </Link>
         ))}
