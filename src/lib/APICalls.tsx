@@ -7,47 +7,51 @@ function parseDaySeries(raw: any): days_series {
     for (const date in series) {
         const day = series[date];
         parsed_series[date] = {
-            open: Number(day["1. open"]),
-            high: Number(day["2. high"]),
-            low: Number(day["3. low"]),
-            close: Number(day["4. close"]),
-            volume: Number(day["5. volume"]),
+            open: Number(day["1. open"] ?? 0),
+            high: Number(day["2. high"] ?? 0),
+            low: Number(day["3. low"] ?? 0),
+            close: Number(day["4. close"] ?? 0),
+            volume: Number(day["5. volume"] ?? 0),
         };
     }
 
     return {
         meta_data: {
-            information: meta["1. Information"],
-            symbol: meta["2. Symbol"],
-            last_refreshed: meta["3. Last Refreshed"],
-            output_size: meta["4. Output Size"],
-            time_zone: meta["5. Time Zone"],
+            information: meta["1. Information"] ?? "NA",
+            symbol: meta["2. Symbol"] ?? "NA",
+            last_refreshed: meta["3. Last Refreshed"] ?? "NA",
+            output_size: meta["4. Output Size"] ?? "NA",
+            time_zone: meta["5. Time Zone"] ?? "NA",
         },
         time_series_daily: parsed_series,
     };
 }
 
+async function getSymbolQuery(symbol: string): Promise<symbol_simple_query> {
+    //TODO: change to dinamic symbol
+    const response = await fetch(
+        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
+    );
+    const symbol_raw_object = await response.json();
+
+    const current: symbol_simple_query = {
+        symbol: symbol,
+        open: Number(symbol_raw_object["Global Quote"]["02. open"]),
+        high: Number(symbol_raw_object["Global Quote"]["03. high"]),
+        low: Number(symbol_raw_object["Global Quote"]["04. low"]),
+        price: Number(symbol_raw_object["Global Quote"]["05. price"]),
+        change: Number(symbol_raw_object["Global Quote"]["09. change"]),
+        change_percent: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)),
+    };
+
+    return current;
+}
+
 export async function getSymbolsQuery(symbols: Array<string>): Promise<Array<symbol_simple_query>> {
 
-    //TODO: change to dinamic symbol
     const resp_symbols: Array<symbol_simple_query> = await Promise.all(
         symbols.map(async (symbol: string) => {
-            const response = await fetch(
-                `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
-            );
-            const symbol_raw_object = await response.json();
-
-            const current: symbol_simple_query = {
-                symbol: symbol,
-                open: Number(symbol_raw_object["Global Quote"]["02. open"]),
-                high: Number(symbol_raw_object["Global Quote"]["03. high"]),
-                low: Number(symbol_raw_object["Global Quote"]["04. low"]),
-                price: Number(symbol_raw_object["Global Quote"]["05. price"]),
-                change: Number(symbol_raw_object["Global Quote"]["09. change"]),
-                change_percent: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)),
-            };
-
-            return current;
+            return getSymbolQuery(symbol);
         })
     );
 
@@ -69,16 +73,17 @@ export async function getSymbolInfo(symbol: string): Promise<symbol_complex_quer
     const day_series_object = await response.json();
 
     return {
-        "symbol": symbol_object["Symbol"],
-        "asset_type": symbol_object["AssetType"],
-        "name": symbol_object["Name"],
-        "description": symbol_object["Description"],
-        "exchange": symbol_object["Exchange"],
-        "currency": symbol_object["Currency"],
-        "country": symbol_object["Country"],
-        "sector": symbol_object["Sector"],
-        "industry": symbol_object["Industry"],
-        "market_capitalization": Number(symbol_object["MarketCapitalization"]),
+        "symbol": symbol_object["Symbol"] ?? "NA",
+        "asset_type": symbol_object["AssetType"] ?? "NA",
+        "name": symbol_object["Name"] ?? "NA",
+        "description": symbol_object["Description"] ?? "NA",
+        "exchange": symbol_object["Exchange"] ?? "NA",
+        "currency": symbol_object["Currency"] ?? "NA",
+        "country": symbol_object["Country"] ?? "NA",
+        "sector": symbol_object["Sector"] ?? "NA",
+        "industry": symbol_object["Industry"] ?? "NA",
+        "market_capitalization": Number(symbol_object["MarketCapitalization"] ?? 0),
+        "last_data": await getSymbolQuery(symbol),
         "day_series": parseDaySeries(day_series_object)
     };
 }

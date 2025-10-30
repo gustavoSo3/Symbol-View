@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DayWinLoose from "./DailyChange";
+import WinLoseColor from "./DayWinLoose";
 
 export default function SymbolCard(
     { symbol }:
@@ -8,8 +8,9 @@ export default function SymbolCard(
     return (
 
         <Link href={`/${symbol.symbol}`} className="grow m-1 p-2 lg:p-3 lg:max-w-fit rounded-md border-4 border-double hover:border-teal-400">
-            <div>
-                <h2 className="text-3xl text-center">{symbol.symbol}</h2>
+            <div className="flex items-center">
+                <img className="h-[48px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=${process.env.NEXT_PUBLIC_LOGO_TOKEN}`} alt={`${symbol} logo`} />
+                <div className="text-3xl pl-3">{symbol.symbol}</div>
 
             </div>
             <div className="flex flex-col max-w-fit">
@@ -21,7 +22,7 @@ export default function SymbolCard(
                 <div className="flex text-xl text-center ">
                     <h3>{symbol.price}</h3>
                     <div className="grow"></div>
-                    <DayWinLoose change={symbol.change_percent}></DayWinLoose>
+                    <WinLoseColor change={symbol.change_percent}></WinLoseColor>
                 </div>
             </div>
 

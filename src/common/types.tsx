@@ -20,6 +20,7 @@ type symbol_complex_query = {
     sector: string;
     industry: string;
     market_capitalization: number;
+    last_data: symbol_simple_query;
     day_series: days_series;
 };
 
@@ -40,6 +41,6 @@ type days_series = {
         time_zone: string;
     };
     time_series_daily: {
-    [date: string]: day_data
+        [date: string]: day_data
     };
 };
