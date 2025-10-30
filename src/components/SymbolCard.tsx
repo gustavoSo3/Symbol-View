@@ -3,7 +3,7 @@ import DayWinLoose from "./DailyChange";
 
 export default function SymbolCard(
     { symbol }:
-        { symbol: symbol_query }
+        { symbol: symbol_simple_query }
 ) {
     return (
 

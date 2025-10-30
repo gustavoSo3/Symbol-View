@@ -1,5 +1,5 @@
 
-type symbol_query = {
+type symbol_simple_query = {
     symbol: string;
     open: number;
     high: number;
@@ -9,7 +9,7 @@ type symbol_query = {
     change_percent: number;
 };
 
-type symbol_iformation = {
+type symbol_complex_query = {
     symbol: string;
     asset_type: string;
     name: string;
@@ -40,6 +40,6 @@ type days_series = {
         time_zone: string;
     };
     time_series_daily: {
-        [date: string]: day_data
+    [date: string]: day_data
     };
 };

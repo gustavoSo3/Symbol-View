@@ -13,7 +13,7 @@ export default function Page({
   params: Promise<{ symbol: string }>
 }) {
 
-  const [symbol, setSymbol] = useState<symbol_iformation>({} as symbol_iformation);
+  const [symbol, setSymbol] = useState<symbol_complex_query>({} as symbol_complex_query);
   const symbol_string: string = use(params).symbol;
 
   useEffect(() => {

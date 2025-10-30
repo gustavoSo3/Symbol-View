@@ -7,7 +7,7 @@ import Link from "next/link";
 
 
 export default function Page() {
-  const [symbols, setSymbols] = useState<symbol_query[]>([]);
+  const [symbols, setSymbols] = useState<symbol_simple_query[]>([]);
   const home_page_symbols: Array<string> = [
     "NVDA",
     "MSFT",
@@ -46,7 +46,7 @@ export default function Page() {
       <h2>My watchlist</h2>
 
       <div className="flex flex-wrap p-2 items-center justify-center">
-        {symbols.map((symbol: symbol_query, index) => (
+        {symbols.map((symbol: symbol_simple_query, index) => (
           <SymbolCard key={index} symbol={symbol}></SymbolCard>
         ))}
       </div>

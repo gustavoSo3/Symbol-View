@@ -21,26 +21,30 @@ export default function DailyTable({
 
     return (
         <table width="100%" className="border-separate border-2 border-black">
-            <tr>
-                <th>Day</th>
-                <th>Open</th>
-                <th>Close</th>
-                <th>+/- day</th>
-                <th>Low</th>
-                <th>High</th>
-                <th>Volume</th>
-            </tr>
-            {table_data.map((value, index) => (
-                <tr key={index}>
-                    <th>{value.date}</th>
-                    <th>{value.open}</th>
-                    <th>{value.close}</th>
-                    <th><DayWinLoose change={value.gain_lose} /></th>
-                    <th>{value.low}</th>
-                    <th>{value.high}</th>
-                    <th>{value.volume}</th>
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Open</th>
+                    <th>Close</th>
+                    <th>+/- day</th>
+                    <th>Low</th>
+                    <th>High</th>
+                    <th>Volume</th>
                 </tr>
-            ))}
+            </thead>
+            <tbody>
+                {table_data.map((value, index) => (
+                    <tr key={index}>
+                        <th>{value.date}</th>
+                        <th>{value.open}</th>
+                        <th>{value.close}</th>
+                        <th><DayWinLoose change={value.gain_lose} /></th>
+                        <th>{value.low}</th>
+                        <th>{value.high}</th>
+                        <th>${value.volume.toLocaleString()}</th>
+                    </tr>
+                ))}
+            </tbody>
         </table>
     )
 }

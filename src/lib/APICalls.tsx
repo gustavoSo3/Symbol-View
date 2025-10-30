@@ -27,17 +27,17 @@ function parseDaySeries(raw: any): days_series {
     };
 }
 
-export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_query>> {
+export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_simple_query>> {
 
     //TODO: change to dinamic symbol
-    const resp_symbols: Array<symbol_query> = await Promise.all(
+    const resp_symbols: Array<symbol_simple_query> = await Promise.all(
         symbols.map(async (symbol: string) => {
             const response = await fetch(
                 `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
             );
             const symbol_raw_object = await response.json();
 
-            const current: symbol_query = {
+            const current: symbol_simple_query = {
                 symbol: symbol,
                 open: Number(symbol_raw_object["Global Quote"]["02. open"]),
                 high: Number(symbol_raw_object["Global Quote"]["03. high"]),
@@ -54,7 +54,7 @@ export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_q
     return resp_symbols;
 }
 
-export async function getSymbolData(symbol: string): Promise<symbol_iformation> {
+export async function getSymbolData(symbol: string): Promise<symbol_complex_query> {
 
     //TODO: change to dinamic symbol
     var response = await fetch(
