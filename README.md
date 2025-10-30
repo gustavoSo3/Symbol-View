@@ -58,3 +58,5 @@ You need API keys from the following services:
 ## Future Improvements
 
 * Add stock search history or favorites
+* Implement Table logic to be able to sort by different metrics.
+* Multiple resolution charts for day, week or month settings.
