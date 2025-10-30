@@ -1,1 +1,54 @@
-# Stock Symbol viewer
+# Stock Symbol Viewer
+
+Stock Symbol Viewer is a small React + Next.js project that lets you visualize stock symbol data through API calls.
+
+## Features
+
+* Fetch stock symbol data from Alpha Vantage
+* Display company logos using Logo.dev
+* Simple interface to view stock information
+* Demo mode available for IBM stock if API limits are reached
+
+## Prerequisites
+
+You need API keys from the following services:
+
+1. **Alpha Vantage** (for stock data)
+   Get your free API key: [https://www.alphavantage.co/support/#api-key](https://www.alphavantage.co/support/#api-key)
+
+2. **Logo.dev** (for company logos)
+   Get your token: [https://www.logo.dev/dashboard](https://www.logo.dev/dashboard)
+
+## Setup
+
+1. **Clone the repository**
+
+   git clone symbol-view
+   cd symbol-view
+
+2. **Install dependencies**
+
+   npm install
+
+3. **Set environment variables**
+   Create a `.env` file in the root folder and add:
+
+   NEXT_PUBLIC_API_KEY=your_alpha_vantage_key
+   NEXT_PUBLIC_LOGO_TOKEN=your_logo_dev_token
+
+4. **Run the development server**
+
+   npm run dev
+   Visit [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Notes
+
+* The project does **not handle API call limits**. If the API stops working, you can switch to demo mode (setting API key to "demo"), which only shows IBM stock data.
+* Keep your API keys private and do **not** commit them to the repository.
+
+## Future Improvements
+
+* Handle API limits and errors gracefully
+* Add stock search history or favorites
+* Display charts for stock performance
+* Improve UI with responsive design and interactivity

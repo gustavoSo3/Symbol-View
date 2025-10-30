@@ -28,9 +28,13 @@ function parseDaySeries(raw: any): days_series {
 }
 
 async function getSymbolQuery(symbol: string): Promise<symbol_simple_query> {
-    //TODO: change to dinamic symbol
+    var symb = "IBM"
+    if (process.env.NEXT_PUBLIC_API_KEY != "demo") {
+        symb = symbol
+    }
+
     const response = await fetch(
-        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=IBM&apikey=demo`
+        `https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=${symb}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`
     );
     const symbol_raw_object = await response.json();
 
@@ -59,15 +63,18 @@ export async function getSymbolsQuery(symbols: Array<string>): Promise<Array<sym
 }
 
 export async function getSymbolInfo(symbol: string): Promise<symbol_complex_query> {
+    var symb = "IBM"
+    if (process.env.NEXT_PUBLIC_API_KEY != "demo") {
+        symb = symbol
+    }
 
-    //TODO: change to dinamic symbol
     var response = await fetch(
-        "https://www.alphavantage.co/query?function=OVERVIEW&symbol=IBM&apikey=demo"
+        `https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symb}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`
     );
     const symbol_object = await response.json();
 
     response = await fetch(
-        "https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=IBM&apikey=demo"
+        `https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol=${symb}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`
     );
 
     const day_series_object = await response.json();
