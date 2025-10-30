@@ -3,6 +3,7 @@ import { use, useEffect, useState } from "react";
 import DailySeriesChart from "../../components/DailySeriesChart";
 import DaylySeriesTable from "../../components/DailySeriesTable";
 import { getSymbolData } from "../../lib/APICalls";
+import SymbolInformation from "../../components/SymbolInformation";
 
 
 
@@ -33,30 +34,7 @@ export default function Page({
   return (
     <div>
       <div className="flex border-2">
-
-        <div className="basis-1/2  border-2">
-          <div className="flex">
-            <div className="text-5xl">{symbol.symbol}</div>
-            <div className="flex flex-col text-l text-gray-600">
-              <div>{symbol.asset_type}</div>
-              <div>{symbol.exchange}</div>
-            </div>
-          </div>
-          <div className="flex">
-            <div className="text-3xl">{symbol.name}</div>
-            <div>{symbol.country}</div>
-          </div>
-          <div className="flex">
-            <div>Market Cap: ${symbol.market_capitalization}</div>
-            <div>: {symbol.currency}</div>
-          </div>
-          <div className="flex flex-col">
-            <div>Sector: {symbol.sector}</div>
-            <div>Industry: {symbol.industry}</div>
-          </div>
-          <div>{symbol.description}</div>
-        </div>
-
+        {symbol && (<SymbolInformation symbol={symbol} />)}
 
         {symbol.day_series && symbol.day_series.time_series_daily && (
           <DailySeriesChart data={symbol.day_series} />
