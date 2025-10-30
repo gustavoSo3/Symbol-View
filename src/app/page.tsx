@@ -47,7 +47,7 @@ export default function Page() {
       <div className="flex flex-wrap p-2 items-center justify-center">
         {loading
           ? Array.from({ length: 15 }).map((_, i) => <SymbolCardSHIMMER key={i} />)
-          : symbols.map((symbol) => <SymbolCard key={symbol.symbol} symbol={symbol} />)
+          : symbols.map((symbol, i) => <SymbolCard key={i} symbol={symbol} />)
         }
       </div>
     </div>
