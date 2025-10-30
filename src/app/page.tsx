@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import { getSymbols } from "../lib/APICalls";
 import SymbolCard from "../components/SymbolCard";
+import Link from "next/link";
 
 
 
@@ -41,6 +42,7 @@ export default function Page() {
 
   return (
     <div>
+      <Link href="/">Go Back to List</Link>
       <h2>My watchlist</h2>
 
       <div className="flex flex-wrap p-2 items-center justify-center">

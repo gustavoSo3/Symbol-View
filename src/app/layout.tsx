@@ -1,4 +1,3 @@
-import Link from "next/link";
 import './globals.css';
 
 
@@ -9,7 +8,6 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <Link href="/">Go Back to List</Link>
       <body>{children}</body>
     </html >
   )

@@ -17,7 +17,7 @@ export default function DailySeriesChart({
 
     return (
 
-        <ResponsiveContainer width="100%" height={420}>
+        <ResponsiveContainer width="50%" height={420}>
             <ComposedChart
                 data={chartData}
                 margin={{ top: 20, right: 40, bottom: 20, left: 0 }}

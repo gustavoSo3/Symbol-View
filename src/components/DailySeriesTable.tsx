@@ -1,3 +1,5 @@
+import DayWinLoose from "./DailyChange";
+
 export default function DailyTable({
     data
 }: {
@@ -18,7 +20,7 @@ export default function DailyTable({
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return (
-        <table width="100%">
+        <table width="100%" className="border-separate border-2 border-black">
             <tr>
                 <th>Day</th>
                 <th>Open</th>
@@ -33,7 +35,7 @@ export default function DailyTable({
                     <th>{value.date}</th>
                     <th>{value.open}</th>
                     <th>{value.close}</th>
-                    <th>{value.gain_lose.toFixed(3)}</th>
+                    <th><DayWinLoose change={value.gain_lose} /></th>
                     <th>{value.low}</th>
                     <th>{value.high}</th>
                     <th>{value.volume}</th>

@@ -32,30 +32,41 @@ export default function Page({
 
   return (
     <div>
-      <h2>{symbol.symbol}</h2>
-      <h3>{symbol.name}</h3>
-      <h4>{symbol.market_capitalization}</h4>
-      <div>
-        <span>{symbol.asset_type}</span>
-        <span>{symbol.country}</span>
-        <span>{symbol.exchange}</span>
-        <span>{symbol.currency}</span>
-      </div>
-      <div>
-        <span>{symbol.sector}</span>
-        <span>{symbol.industry}</span>
-        <span>{symbol.exchange}</span>
-        <span>{symbol.currency}</span>
-      </div>
-      <p>{symbol.description}</p>
+      <div className="flex border-2">
+
+        <div className="basis-1/2  border-2">
+          <div className="flex">
+            <div className="text-5xl">{symbol.symbol}</div>
+            <div className="flex flex-col text-l text-gray-600">
+              <div>{symbol.asset_type}</div>
+              <div>{symbol.exchange}</div>
+            </div>
+          </div>
+          <div className="flex">
+            <div className="text-3xl">{symbol.name}</div>
+            <div>{symbol.country}</div>
+          </div>
+          <div className="flex">
+            <div>Market Cap: ${symbol.market_capitalization}</div>
+            <div>: {symbol.currency}</div>
+          </div>
+          <div className="flex flex-col">
+            <div>Sector: {symbol.sector}</div>
+            <div>Industry: {symbol.industry}</div>
+          </div>
+          <div>{symbol.description}</div>
+        </div>
 
 
-      {symbol.day_series && symbol.day_series.time_series_daily && (
-        <DailySeriesChart data={symbol.day_series} />
-      )}
-      {symbol.day_series && symbol.day_series.time_series_daily && (
-        <DaylySeriesTable data={symbol.day_series} />
-      )}
-    </div>
+        {symbol.day_series && symbol.day_series.time_series_daily && (
+          <DailySeriesChart data={symbol.day_series} />
+        )}
+      </div>
+      {
+        symbol.day_series && symbol.day_series.time_series_daily && (
+          <DaylySeriesTable data={symbol.day_series} />
+        )
+      }
+    </div >
   );
 }

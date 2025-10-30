@@ -1,5 +1,5 @@
 import Link from "next/link";
-import DailyChange from "./DailyChange";
+import DayWinLoose from "./DailyChange";
 
 export default function SymbolCard(
     { symbol }:
@@ -21,7 +21,7 @@ export default function SymbolCard(
                 <div className="flex text-xl text-center">
                     <h3>{symbol.price}</h3>
                     <div className="grow"></div>
-                    <DailyChange change={symbol.change_percent}></DailyChange>
+                    <DayWinLoose change={symbol.change_percent}></DayWinLoose>
                 </div>
             </div>
 
