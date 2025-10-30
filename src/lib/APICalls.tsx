@@ -27,7 +27,7 @@ function parseDaySeries(raw: any): days_series {
     };
 }
 
-export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_simple_query>> {
+export async function getSymbolsQuery(symbols: Array<string>): Promise<Array<symbol_simple_query>> {
 
     //TODO: change to dinamic symbol
     const resp_symbols: Array<symbol_simple_query> = await Promise.all(
@@ -54,7 +54,7 @@ export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_s
     return resp_symbols;
 }
 
-export async function getSymbolData(symbol: string): Promise<symbol_complex_query> {
+export async function getSymbolInfo(symbol: string): Promise<symbol_complex_query> {
 
     //TODO: change to dinamic symbol
     var response = await fetch(

@@ -7,18 +7,18 @@ export default function SymbolCard(
 ) {
     return (
 
-        <Link href={`/${symbol.symbol}`} className="grow m-1 p-3 max-w-fit rounded-md border-4 border-double hover:border-teal-400">
+        <Link href={`/${symbol.symbol}`} className="grow m-1 p-2 lg:p-3 lg:max-w-fit rounded-md border-4 border-double hover:border-teal-400">
             <div>
                 <h2 className="text-3xl text-center">{symbol.symbol}</h2>
 
             </div>
-            <div className="flex flex-col">
+            <div className="flex flex-col max-w-fit">
                 <div className="flex text-center">
                     <div className="m-1">o: {symbol.open}</div>
                     <div className="m-1">h: {symbol.high}</div>
                     <div className="m-1">l: {symbol.low}</div>
                 </div>
-                <div className="flex text-xl text-center">
+                <div className="flex text-xl text-center ">
                     <h3>{symbol.price}</h3>
                     <div className="grow"></div>
                     <DayWinLoose change={symbol.change_percent}></DayWinLoose>

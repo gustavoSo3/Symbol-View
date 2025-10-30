@@ -20,31 +20,35 @@ export default function DailyTable({
         .sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return (
-        <table width="100%" className="border-separate border-2 border-black">
-            <thead>
-                <tr>
-                    <th>Day</th>
-                    <th>Open</th>
-                    <th>Close</th>
-                    <th>+/- day</th>
-                    <th>Low</th>
-                    <th>High</th>
-                    <th>Volume</th>
-                </tr>
-            </thead>
-            <tbody>
-                {table_data.map((value, index) => (
-                    <tr key={index}>
-                        <th>{value.date}</th>
-                        <th>{value.open}</th>
-                        <th>{value.close}</th>
-                        <th><DayWinLoose change={value.gain_lose} /></th>
-                        <th>{value.low}</th>
-                        <th>{value.high}</th>
-                        <th>${value.volume.toLocaleString()}</th>
+        <div className="border-separate border-t-2 border-gray-500 overflow-x-scroll ">
+            <div className="text-xl text-center">Daily Series</div>
+
+            <table className="w-full divide-y-4 border-t-2">
+                <thead>
+                    <tr className=" divide-x-2">
+                        <th>Day</th>
+                        <th>Open</th>
+                        <th>Close</th>
+                        <th>+/- day</th>
+                        <th>Low</th>
+                        <th>High</th>
+                        <th>Volume</th>
                     </tr>
-                ))}
-            </tbody>
-        </table>
+                </thead>
+                <tbody className="divide-y-2 ">
+                    {table_data.map((value, index) => (
+                        <tr key={index} className="divide-x-2 ">
+                            <th>{value.date}</th>
+                            <th>{value.open}</th>
+                            <th>{value.close}</th>
+                            <th><DayWinLoose change={value.gain_lose} /></th>
+                            <th>{value.low}</th>
+                            <th>{value.high}</th>
+                            <th>${value.volume.toLocaleString()}</th>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
     )
 }

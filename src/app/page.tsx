@@ -1,8 +1,7 @@
 "use client"
 import { useEffect, useState } from "react";
-import { getSymbols } from "../lib/APICalls";
+import { getSymbolsQuery } from "../lib/APICalls";
 import SymbolCard from "../components/SymbolCard";
-import Link from "next/link";
 
 
 
@@ -28,7 +27,7 @@ export default function Page() {
 
   useEffect(() => {
 
-    getSymbols(home_page_symbols)
+    getSymbolsQuery(home_page_symbols)
       .then((fetched_data) => {
         console.log(fetched_data);
         setSymbols(fetched_data);
@@ -42,8 +41,7 @@ export default function Page() {
 
   return (
     <div>
-      <Link href="/">Go Back to List</Link>
-      <h2>My watchlist</h2>
+      <div className="mt-3 text-2xl text-center">Click on a symbol for more information</div>
 
       <div className="flex flex-wrap p-2 items-center justify-center">
         {symbols.map((symbol: symbol_simple_query, index) => (

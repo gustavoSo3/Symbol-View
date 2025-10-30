@@ -16,8 +16,7 @@ export default function DailySeriesChart({
     })).sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
 
     return (
-
-        <ResponsiveContainer width="50%" height={420}>
+        <ResponsiveContainer width="100%" height="100%">
             <ComposedChart
                 data={chartData}
                 margin={{ top: 20, right: 40, bottom: 20, left: 0 }}
@@ -86,7 +85,6 @@ export default function DailySeriesChart({
             </ComposedChart>
 
         </ResponsiveContainer>
-
 
 
     );
