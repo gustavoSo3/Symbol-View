@@ -22,23 +22,24 @@ You need API keys from the following services:
 ## Setup
 
 1. **Clone the repository**
-
+```sh
    git clone symbol-view
    cd symbol-view
-
+```
 2. **Install dependencies**
-
+```sh
    npm install
-
+```
 3. **Set environment variables**
    Create a `.env` file in the root folder and add:
-
+```sh
    NEXT_PUBLIC_API_KEY=your_alpha_vantage_key
    NEXT_PUBLIC_LOGO_TOKEN=your_logo_dev_token
-
+```
 4. **Run the development server**
-
+```sh
    npm run dev
+```
    Visit [http://localhost:3000](http://localhost:3000) in your browser.
 
 ## Notes
