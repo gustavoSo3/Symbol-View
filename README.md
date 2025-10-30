@@ -24,8 +24,8 @@ You need API keys from the following services:
 1. **Clone the repository**
 
 ```sh
-   git clone symbol-view
-   cd symbol-view
+   git clone https://github.com/gustavoSo3/Symbol-View.git
+   cd Symbol-View
 ```
 
 2. **Install dependencies**
