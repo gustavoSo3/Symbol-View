@@ -3,7 +3,7 @@ import { ResponsiveContainer, ComposedChart, CartesianGrid, XAxis, YAxis, Toolti
 export default function DaylySeriesChart({
     data
 }: {
-    data: day_series
+    data: days_series
 }) {
 
     const chartData = Object.entries(data.time_series_daily).map(([date, values]) => ({

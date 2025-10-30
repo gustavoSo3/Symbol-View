@@ -1,4 +1,4 @@
-type symbol_data = {
+type symbol_query = {
     symbol: string;
     open_value: number;
     current_value: number;
@@ -16,10 +16,18 @@ type symbol_iformation = {
     sector: string;
     industry: string;
     market_capitalization: number;
-    day_series: day_series;
+    day_series: days_series;
 };
 
-type day_series = {
+type day_data = {
+    open: number;
+    high: number;
+    low: number;
+    close: number;
+    volume: number;
+};
+
+type days_series = {
     meta_data: {
         information: string;
         symbol: string;
@@ -28,12 +36,6 @@ type day_series = {
         time_zone: string;
     };
     time_series_daily: {
-        [date: string]: {
-            open: number;
-            high: number;
-            low: number;
-            close: number;
-            volume: number;
-        };
+        [date: string]: day_data
     };
 };

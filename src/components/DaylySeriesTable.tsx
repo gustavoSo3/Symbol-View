@@ -1,7 +1,7 @@
 export default function DaylyTable({
     data
 }: {
-    data: day_series
+    data: days_series
 }) {
 
     const table_data = Object.entries(data.time_series_daily)
