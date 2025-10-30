@@ -57,5 +57,4 @@ You need API keys from the following services:
 
 ## Future Improvements
 
-* Handle API limits and errors gracefully
 * Add stock search history or favorites
