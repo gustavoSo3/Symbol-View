@@ -34,7 +34,7 @@ export default function SymbolCard(
 
         <Link href={`/${symbol.symbol}`} className="grow m-1 p-2 lg:p-3 lg:max-w-[260px] rounded-md border-4 border-double hover:border-teal-400">
             <div className="flex items-center">
-                <img className="h-[48px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=${process.env.NEXT_PUBLIC_LOGO_TOKEN}`} alt={`${symbol} logo`} />
+                <img className="h-[48px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=pk_W1ts02iVSVOyP5OF3ioMfA`} alt={`${symbol} logo`} />
                 <div className="text-3xl pl-3">{symbol.symbol}</div>
 
             </div>

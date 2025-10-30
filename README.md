@@ -16,9 +16,6 @@ You need API keys from the following services:
 1. **Alpha Vantage** (for stock data)
    Get your free API key: [https://www.alphavantage.co/support/#api-key](https://www.alphavantage.co/support/#api-key)
 
-2. **Logo.dev** (for company logos)
-   Get your token: [https://www.logo.dev/dashboard](https://www.logo.dev/dashboard)
-
 ## Setup
 
 1. **Clone the repository**
@@ -39,8 +36,9 @@ You need API keys from the following services:
 
 ```sh
    NEXT_PUBLIC_API_KEY=your_alpha_vantage_key
-   NEXT_PUBLIC_LOGO_TOKEN=your_logo_dev_token
 ```
+
+   If API Keys are not set you would get the demo request that would give you IBM data only
 
 4. **Run the development server**
 

@@ -44,7 +44,7 @@ export default function SymbolInformation({ symbol }: { symbol: symbol_complex_q
         <div>
             <div className="flex flex-col lg:flex-row items-center pb-4">
                 <div className="flex">
-                    <img className="h-[60px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=${process.env.NEXT_PUBLIC_LOGO_TOKEN}`} alt={`${symbol} logo`} />
+                    <img className="h-[60px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=pk_W1ts02iVSVOyP5OF3ioMfA`} alt={`${symbol} logo`} />
                     <div className="text-6xl pl-2">{symbol.symbol}</div>
                     <div className="flex flex-col text-l text-gray-600">
                         <div>{symbol?.asset_type ?? "N/A"}</div>
