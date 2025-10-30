@@ -81,7 +81,7 @@ async function getSymbolQuery(symbol: string): Promise<symbol_simple_query> {
         low: Number(symbol_raw_object["Global Quote"]["04. low"]) ?? 0,
         price: Number(symbol_raw_object["Global Quote"]["05. price"]) ?? 0,
         change: Number(symbol_raw_object["Global Quote"]["09. change"]) ?? 0,
-        change_percent: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)) ?? 0,
+        change_percent: parseFloat(symbol_raw_object["Global Quote"]["10. change percent"].replace("%", "")),
     };
 }
 

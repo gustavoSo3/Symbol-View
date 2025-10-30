@@ -3,9 +3,9 @@ export default function WinLoseColor(
 ) {
 
     if (change > 0) {
-        return <div className="text-green-600">{change} &uarr;</div>
+        return <span className="text-green-600">{change} &uarr;</span>
     } else {
-        return <div className="text-red-600">{change} &darr;</div>
+        return <span className="text-red-600">{change} &darr;</span>
     }
 
 }

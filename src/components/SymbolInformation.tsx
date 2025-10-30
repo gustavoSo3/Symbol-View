@@ -53,11 +53,11 @@ export default function SymbolInformation({ symbol }: { symbol: symbol_complex_q
                 </div>
                 <div className="grow"></div>
                 <div className="flex flex-row lg:flex-col pr-3 mt-2 lg:pt-1 text-right">
-                    <div className="pl-2">L: {symbol.last_data?.low}</div>
-                    <div className="pl-2">H: {symbol.last_data?.high}</div>
-                    <div className="pl-2">C: {symbol.last_data?.price}</div>
+                    <div className="pl-2">L: ${symbol.last_data?.low}</div>
+                    <div className="pl-2">H: ${symbol.last_data?.high}</div>
+                    <div className="pl-2">C: ${symbol.last_data?.price}</div>
                     <div className="pl-2">
-                        <WinLoseColor change={symbol.last_data?.change}></WinLoseColor>
+                        <WinLoseColor change={symbol.last_data?.change_percent}></WinLoseColor>%
                     </div>
                 </div>
 
