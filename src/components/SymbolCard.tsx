@@ -1,6 +1,35 @@
 import Link from "next/link";
 import WinLoseColor from "./DayWinLoose";
 
+export function SymbolCardSHIMMER() {
+    return (
+        <div className="grow m-1 p-2 lg:p-3 lg:max-w-fit rounded-md border-4 border-double border-gray-200 animate-pulse">
+            {/* Top row: logo and symbol */}
+            <div className="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-3">
+                <div className="h-[48px] w-[48px] bg-gray-300 rounded-full"></div>
+                <div className="h-6 w-20 bg-gray-300 rounded"></div>
+            </div>
+
+            {/* Bottom row: open/high/low and price */}
+            <div className="flex flex-col items-center mt-2 space-y-2">
+                {/* o/h/l row */}
+                <div className="flex justify-center space-x-2">
+                    <div className="h-4 w-12 bg-gray-300 rounded"></div>
+                    <div className="h-4 w-12 bg-gray-300 rounded"></div>
+                    <div className="h-4 w-12 bg-gray-300 rounded"></div>
+                </div>
+
+                {/* price + change */}
+                <div className="flex justify-center items-center space-x-2">
+                    <div className="h-6 w-16 bg-gray-300 rounded"></div>
+                    <div className="h-6 w-6 bg-gray-300 rounded-full"></div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+
 export default function SymbolCard(
     { symbol }:
         { symbol: symbol_simple_query }
