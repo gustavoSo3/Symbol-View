@@ -1,3 +1,4 @@
+"use client"
 import { use, useEffect, useState } from "react";
 import DaylySeriesChart from "../../components/DaylySeriesChart";
 import DaylySeriesTable from "../../components/DaylySeriesTable";

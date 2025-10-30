@@ -7,7 +7,7 @@ export default function SymbolCard(
     return (
 
         <Link href={`/${symbol.symbol}`}>
-            <div className="border-2">
+            <div>
                 <h2>{symbol.symbol}</h2>
                 <h3>open: {symbol.open_value}</h3>
                 <h3>current: {symbol.current_value}</h3>

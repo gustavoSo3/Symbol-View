@@ -1,3 +1,4 @@
+"use client"
 import { useEffect, useState } from "react";
 import { getSymbols } from "../lib/APICalls";
 import SymbolCard from "../components/SymbolCard";
