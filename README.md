@@ -45,11 +45,9 @@ You need API keys from the following services:
 ## Notes
 
 * The project does **not handle API call limits**. If the API stops working, you can switch to demo mode (setting API key to "demo"), which only shows IBM stock data.
-* Keep your API keys private and do **not** commit them to the repository.
+* Keep your API keys private and do **not** commit them to any repository.
 
 ## Future Improvements
 
 * Handle API limits and errors gracefully
 * Add stock search history or favorites
-* Display charts for stock performance
-* Improve UI with responsive design and interactivity
