@@ -43,7 +43,7 @@ export default function Page() {
     <div>
       <h2>My watchlist</h2>
 
-      <div>
+      <div className="flex flex-wrap p-2 items-center justify-center">
         {symbols.map((symbol: symbol_query, index) => (
           <SymbolCard key={index} symbol={symbol}></SymbolCard>
         ))}

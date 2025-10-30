@@ -1,4 +1,4 @@
-export default function DaylyTable({
+export default function DailyTable({
     data
 }: {
     data: days_series

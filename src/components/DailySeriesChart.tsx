@@ -1,6 +1,6 @@
 import { ResponsiveContainer, ComposedChart, CartesianGrid, XAxis, YAxis, Tooltip, Legend, Bar, Cell, Line } from "recharts";
 
-export default function DaylySeriesChart({
+export default function DailySeriesChart({
     data
 }: {
     data: days_series

@@ -1,8 +1,12 @@
+
 type symbol_query = {
     symbol: string;
-    open_value: number;
-    current_value: number;
+    open: number;
+    high: number;
+    low: number;
+    price: number;
     change: number;
+    change_percent: number;
 };
 
 type symbol_iformation = {

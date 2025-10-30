@@ -39,9 +39,12 @@ export async function getSymbols(symbols: Array<string>): Promise<Array<symbol_q
 
             const current: symbol_query = {
                 symbol: symbol,
-                open_value: Number(symbol_raw_object["Global Quote"]["02. open"]),
-                current_value: Number(symbol_raw_object["Global Quote"]["05. price"]),
-                change: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)),
+                open: Number(symbol_raw_object["Global Quote"]["02. open"]),
+                high: Number(symbol_raw_object["Global Quote"]["03. high"]),
+                low: Number(symbol_raw_object["Global Quote"]["04. low"]),
+                price: Number(symbol_raw_object["Global Quote"]["05. price"]),
+                change: Number(symbol_raw_object["Global Quote"]["09. change"]),
+                change_percent: Number(symbol_raw_object["Global Quote"]["10. change percent"].slice(0, 7)),
             };
 
             return current;

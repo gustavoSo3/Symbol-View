@@ -1,7 +1,7 @@
 "use client"
 import { use, useEffect, useState } from "react";
-import DaylySeriesChart from "../../components/DaylySeriesChart";
-import DaylySeriesTable from "../../components/DaylySeriesTable";
+import DailySeriesChart from "../../components/DailySeriesChart";
+import DaylySeriesTable from "../../components/DailySeriesTable";
 import { getSymbolData } from "../../lib/APICalls";
 
 
@@ -51,7 +51,7 @@ export default function Page({
 
 
       {symbol.day_series && symbol.day_series.time_series_daily && (
-        <DaylySeriesChart data={symbol.day_series} />
+        <DailySeriesChart data={symbol.day_series} />
       )}
       {symbol.day_series && symbol.day_series.time_series_daily && (
         <DaylySeriesTable data={symbol.day_series} />
