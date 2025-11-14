@@ -1,8 +1,8 @@
-import { warn } from "console";
+import "server-only";
 
 async function validateAPICall(url: string): Promise<any> {
     try {
-        const response = await fetch(url);
+        const response = await fetch(url, { cache: "force-cache" });
 
         if (!response.ok) {
             const errorText = await response.text();
@@ -27,7 +27,7 @@ async function validateAPICall(url: string): Promise<any> {
 
         return data;
     } catch (error: any) {
-        console.error(`Error fetching URL ${url}:`, error.message || error);
+        //console.error(`Error fetching URL ${url}:`, error.message || error);
         return null;
     }
 }
@@ -101,6 +101,8 @@ export async function getSymbolInfo(symbol: string): Promise<symbol_complex_quer
     if (process.env.NEXT_PUBLIC_API_KEY != "demo") {
         symb = symbol
     }
+
+
 
     var symbol_raw_object = await validateAPICall(`https://www.alphavantage.co/query?function=OVERVIEW&symbol=${symb}&apikey=${process.env.NEXT_PUBLIC_API_KEY}`);
 

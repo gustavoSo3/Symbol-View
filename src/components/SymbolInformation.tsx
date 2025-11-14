@@ -1,3 +1,4 @@
+import { use } from "react";
 import WinLoseColor from "./DayWinLoose";
 
 export function SymbolInformationSHIMMER() {
@@ -39,7 +40,8 @@ export function SymbolInformationSHIMMER() {
 }
 
 
-export default function SymbolInformation({ symbol }: { symbol: symbol_complex_query }) {
+export default function SymbolInformation({ symbol_promise }: { symbol_promise: Promise<symbol_complex_query> }) {
+    const symbol = use(symbol_promise);
     return (
         <div>
             <div className="flex flex-col lg:flex-row items-center pb-4">

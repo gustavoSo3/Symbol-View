@@ -1,3 +1,4 @@
+import { use } from "react";
 import WinLoseColor from "./DayWinLoose";
 
 export function DailyTableSHIMMER() {
@@ -34,11 +35,12 @@ export function DailyTableSHIMMER() {
     )
 }
 export default function DailyTable({
-    data
+    symbol_promise
 }: {
-    data: days_series
+    symbol_promise: Promise<symbol_complex_query>
 }) {
 
+    const data: days_series = use(symbol_promise).day_series;
     const table_data = Object.entries(data.time_series_daily)
         .map(([date, values]) => ({
             date,
@@ -75,7 +77,7 @@ export default function DailyTable({
                             <th>
                                 {new Date(value.date).toLocaleDateString("en-US", {
                                     year: "numeric",
-                                    month: "short", // short = Oct, long = October
+                                    month: "short",
                                     day: "numeric"
                                 })}</th>
                             <th>{value.open}</th>
