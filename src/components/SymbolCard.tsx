@@ -1,5 +1,6 @@
 import Link from "next/link";
 import WinLoseColor from "./DayWinLoose";
+import Image from "next/image";
 
 export function SymbolCardSHIMMER() {
     return (
@@ -34,8 +35,7 @@ export default function SymbolCard(
 
         <Link href={`/${symbol.symbol}`} className="grow m-1 p-2 lg:p-3 lg:max-w-[260px] lg:min-h-[165px] rounded-md border-4 border-double hover:border-teal-400">
             <div className="flex items-center">
-                <img className="h-[48px] aspect-square" src={`https://img.logo.dev/ticker/${symbol.symbol}?token=pk_W1ts02iVSVOyP5OF3ioMfA`} alt={`${symbol} logo`} />
-                <div className="text-3xl pl-3">{symbol.symbol}</div>
+                <Image src={`https://img.logo.dev/ticker/${symbol.symbol}?token=pk_W1ts02iVSVOyP5OF3ioMfA`} alt={`${symbol} logo`} width="48" height="48" className="h-[48px] aspect-square"></Image>
 
             </div>
             <div className="flex flex-col max-w-fit">
