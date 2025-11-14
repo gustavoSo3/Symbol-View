@@ -5,7 +5,9 @@ Stock Symbol Viewer is a small React + Next.js project that lets you visualize s
 ## Features
 
 * Fetch stock symbol data from Alpha Vantage
+  * Implemented {cache:force-cache}
 * Display company logos using Logo.dev
+  * Using Next.js Image Component
 * Simple interface to view stock information
 * Demo mode available for IBM stock if API limits are reached
 
@@ -32,7 +34,7 @@ You need API keys from the following services:
 ```
 
 3. **Set environment variables**
-   Create a `.env` file in the root folder and add:
+   Create a `.env` or `.env.local` file in the root folder and add:
 
 ```sh
    NEXT_PUBLIC_API_KEY=your_alpha_vantage_key
